@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Атрибуты фильма</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .film-info {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .film-info li {
+            margin-bottom: 10px;
+        }
+
+        .film-info label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Атрибуты фильма</h1>
+
+<ul class="film-info">
+  <li>
+    <label>Наименование:</label>
+    <span id="filmName">Фильм 1</span>
+  </li>
+  <li>
+    <label>Режисер:</label>
+    <span id="filmDirector">Режисер 1</span>
+  </li>
+  <li>
+    <label>Год выпуска:</label>
+    <span id="filmYear">2022</span>
+  </li>
+</ul>
+
+<button class="btn" id="editInfoButton">Изменить сведения</button>
+<button class="btn" id="sellTicketButton">Продать билет</button>
+</body>
+</html>

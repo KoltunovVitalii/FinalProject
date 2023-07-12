@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Добавление билета</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Добавление билета</h1>
+
+<div class="form-container">
+  <div class="form-group">
+    <label for="filmSelect">Выбор фильма:</label>
+    <select id="filmSelect">
+      <option value="1">Фильм 1</option>
+      <option value="2">Фильм 2</option>
+      <option value="3">Фильм 3</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="ticketNumberInput">Номер:</label>
+    <input type="text" id="ticketNumberInput">
+  </div>
+  <div class="form-group">
+    <label for="seatInput">Место:</label>
+    <input type="text" id="seatInput">
+  </div>
+  <button class="btn" id="addTicketButton">Добавить билет</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Список фильмов</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .film-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .film-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .film-title {
+            margin-right: 10px;
+        }
+
+        .buttons-container {
+            display: flex;
+        }
+
+        .btn {
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Список фильмов</h1>
+
+<ul class="film-list">
+    <li class="film-item" th:each="movie: ${movies}">
+        <span class="film-title" th:text="${movie.getTitle()}">Название фильм</span>
+        <div class="buttons-container">
+            <button class="btn view-details-btn">Посмотреть детали о фильме</button>
+            <button class="btn delete-film-btn">Удалить фильм</button>
+        </div>
+    </li>
+</ul>
+
+<button id="addFilmButton">Добавить фильм</button>
+</body>
+</html>

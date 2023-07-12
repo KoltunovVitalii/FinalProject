@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Список билетов</title>
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .ticket-list {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .ticket-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .ticket-info {
+            margin-right: 10px;
+        }
+
+        .buttons-container {
+            display: flex;
+        }
+
+        .btn {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Список билетов</h1>
+
+<ul class="ticket-list">
+  <li class="ticket-item">
+    <span class="ticket-info">Билет 1</span>
+    <div class="buttons-container">
+      <button class="btn sell-ticket-btn">Продать билет</button>
+      <button class="btn return-ticket-btn">Вернуть билет</button>
+    </div>
+  </li>
+  <li class="ticket-item">
+    <span class="ticket-info">Билет 2</span>
+    <div class="buttons-container">
+      <button class="btn sell-ticket-btn">Продать билет</button>
+      <button class="btn return-ticket-btn">Вернуть билет</button>
+    </div>
+  </li>
+</ul>
+</body>
+</html>
