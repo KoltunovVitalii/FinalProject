@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали билета</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .ticket-info {
+            margin-top: 20px;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .ticket-info li {
+            margin-bottom: 10px;
+        }
+
+        .ticket-info label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .ticket-details {
+            margin-bottom: 20px;
+
+        }
+
+        .button {
+          margin-right: 5px;
+          padding: 10px 20px;
+          background-color: #4CAF50;
+          color: white;
+          text-decoration: none;
+          border-radius: 4px;
+          font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Детали билета</h1>
+
+<div class="ticket-info">
+    <div class="ticket-details">
+        <label>Наименование фильма:</label>
+        <span th:text="${movie.getTitle()}" id="filmName">Наименование фильма</span>
+    </div>
+
+    <div class="ticket-details">
+        <label>Ряд:</label>
+        <span th:text="${ticket.getNumber()}" id="ticketNumber">Номер</span>
+    </div>
+
+    <div class="ticket-details">
+        <label>Место:</label>
+        <span th:text="${ticket.getSeat()}" id="seatNumber">Место</span>
+    </div>
+</div>
+<a href="/tickets" class="button">Назад к списку билетов</a>
+</body>
+</html>

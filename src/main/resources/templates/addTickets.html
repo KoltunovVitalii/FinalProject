@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Добавление билета</title>
@@ -25,30 +25,41 @@
         .btn {
             margin-top: 10px;
         }
+        .button {
+          margin-right: 5px;
+          padding: 10px 20px;
+          background-color: #4CAF50;
+          color: white;
+          text-decoration: none;
+          border-radius: 4px;
+          font-weight: bold;
+        }
     </style>
 </head>
 <body>
 <h1>Добавление билета</h1>
 
-<div class="form-container">
+<form method="post" action="/tickets/add" class="form-container">
   <div class="form-group">
     <label for="filmSelect">Выбор фильма:</label>
-    <select id="filmSelect">
-      <option value="1">Фильм 1</option>
-      <option value="2">Фильм 2</option>
-      <option value="3">Фильм 3</option>
+    <select name="movie" id="filmSelect" >
+      <option th:each="movie: ${movies}" th:value="${movie.id}" th:text="${movie.title}">Название фильма</option>
     </select>
   </div>
   <div class="form-group">
-    <label for="ticketNumberInput">Номер:</label>
-    <input type="text" id="ticketNumberInput">
+    <label for="numberInput">Ряд:</label>
+    <input type="number" name="number"
+           min="0" max="30" id="numberInput">
   </div>
   <div class="form-group">
     <label for="seatInput">Место:</label>
-    <input type="text" id="seatInput">
+    <input type="number" name="seat"
+           min="0" max="30" id="seatInput">
   </div>
-  <button class="btn" id="addTicketButton">Добавить билет</button>
-</div>
+  <button type="submit" class="btn button" id="addTicketButton">Добавить билет</button>
+
+  <a href="/tickets" class="button">Назад к списку билетов</a>
+</form>
 
 </body>
 </html>

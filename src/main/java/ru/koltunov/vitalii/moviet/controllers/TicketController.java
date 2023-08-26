@@ -1,4 +1,7 @@
 package ru.koltunov.vitalii.moviet.controllers;
+import lombok.AllArgsConstructor;
+import ru.koltunov.vitalii.moviet.model.Movie;
+import ru.koltunov.vitalii.moviet.repositories.MovieRepository;
 import ru.koltunov.vitalii.moviet.repositories.TicketRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,9 +12,12 @@ import ru.koltunov.vitalii.moviet.model.Ticket;
 @RequestMapping("/tickets")
 public class TicketController {
     private final TicketRepository ticketRepository;
+    private final MovieRepository movieRepository;
 
-    public TicketController(TicketRepository ticketRepository) {
+
+    public TicketController(TicketRepository ticketRepository, MovieRepository movieRepository) {
         this.ticketRepository = ticketRepository;
+        this.movieRepository = movieRepository;
     }
 
     @GetMapping
@@ -21,27 +27,37 @@ public class TicketController {
         return "tickets";
     }
 
-    @GetMapping("/{id}/edit")
-    public String editTicketForm(@PathVariable("id") Long id, Model model) {
-        Ticket ticket = ticketRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid ticket ID: " + id));
-        model.addAttribute("ticket", ticket);
-        return "edit-ticket";
+    @GetMapping("/add")
+    public String addNew(Model model) {
+        Iterable<Movie> movies = movieRepository.findAll();
+        model.addAttribute("movies", movies);
+        return "addTickets";
     }
 
-    @PostMapping("/{id}/edit")
-    public String editTicket(@PathVariable("id") Long id, @ModelAttribute("ticket") Ticket editedTicket) {
-        Ticket ticket = ticketRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid ticket ID: " + id));
-        ticket.setMovieTitle(editedTicket.getMovieTitle());
-        ticket.setCustomerName(editedTicket.getCustomerName());
-        ticketRepository.save(ticket);
+    @PostMapping("/add")
+    public String addNew(
+            @RequestParam("number") int number,
+            @RequestParam("seat") int seat,
+            @RequestParam("movie") long movie) {
+        Ticket ticket = ticketRepository.save(new Ticket(0, number, seat, movie));
         return "redirect:/tickets";
     }
 
-    @GetMapping("/{id}/delete")
+    @PostMapping ("/{id}/delete")
     public String deleteTicket(@PathVariable("id") Long id) {
         ticketRepository.deleteById(id);
         return "redirect:/tickets";
     }
+
+    @GetMapping ("ticketDetails/{id}")
+    public String ticketDetails(@PathVariable("id") Long id, Model model) {
+        Ticket ticket = ticketRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid ticket ID: " + id));
+        Movie movie = movieRepository.findById(ticket.getMovie())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid movie ID: " + ticket.getMovie()));
+        model.addAttribute("ticket", ticket);
+        model.addAttribute("movie", movie);
+        return "ticketDetails";
+    }
+
 }

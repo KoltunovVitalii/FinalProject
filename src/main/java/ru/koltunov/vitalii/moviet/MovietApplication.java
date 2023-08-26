@@ -5,11 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class MovietApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(MovietApplication.class, args);
 	}
-
 }
 
 /*
@@ -18,7 +16,7 @@ public class MovietApplication {
 1. я хочу видеть список фильмов
 2. по каждому фильму видеть список билетов
 3. список фильмов должен иметь возможность добавления/редактирования/удаления
-4. список билетов должен иметь возможность добавления/редактирования/удаления
+4. список билетов должен иметь возможность добавления/удаления
 
 Сущности:
 =========

@@ -30,23 +30,38 @@
 
         .btn {
             margin-right: 5px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
         }
+
 
     </style>
 </head>
 <body>
 <h1>Список фильмов</h1>
+<form>
+    <ul class="film-list">
+        <li class="film-item" th:each="movie: ${movies}">
+            <label>Id:</label>
+            <span class="film-title" th:text="${movie.getId()}">Id</span>
+            <label>Название:</label>
+            <span class="film-title" th:text="${movie.getTitle()}">Название</span>
+            <div class="buttons-container">
+                <a th:href="|/movies/movieDetails/${movie.getId()}|" class="btn view-details-btn">Посмотреть детали</a>
+                <button formmethod="post" th:formaction="|/movies/${movie.getId()}/delete|" class="btn delete-film-btn">
+                    Удалить
+                </button>
+            </div>
+        </li>
+    </ul>
 
-<ul class="film-list">
-    <li class="film-item" th:each="movie: ${movies}">
-        <span class="film-title" th:text="${movie.getTitle()}">Название фильм</span>
-        <div class="buttons-container">
-            <button class="btn view-details-btn">Посмотреть детали о фильме</button>
-            <button class="btn delete-film-btn">Удалить фильм</button>
-        </div>
-    </li>
-</ul>
 
-<button id="addFilmButton">Добавить фильм</button>
+    <a href="/movies/add" id="addFilmButton" class="btn">Добавить</a>
+    <a href="/" id="back" class="btn">На главную страницу</a>
+</form>
 </body>
 </html>

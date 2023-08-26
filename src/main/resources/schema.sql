@@ -3,6 +3,7 @@
 BEGIN;
 
 
+DROP TABLE IF EXISTS public.tickets;
 DROP TABLE IF EXISTS public.movies;
 
 CREATE TABLE IF NOT EXISTS public.movies
@@ -13,8 +14,6 @@ CREATE TABLE IF NOT EXISTS public.movies
     director character varying NOT NULL,
     PRIMARY KEY (id)
 );
-
-DROP TABLE IF EXISTS public.tickets;
 
 CREATE TABLE IF NOT EXISTS public.tickets
 (

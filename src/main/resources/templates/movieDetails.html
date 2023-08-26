@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Детали о фильме</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .movie-details {
+      margin-bottom: 20px;
+
+    }
+
+    .movie-details label {
+      display: inline-block;
+      width: 120px;
+      font-weight: bold;
+    }
+
+    .button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+<h1>Детали о фильме</h1>
+
+<div class="movie-details" >
+  <label>Наименование фильма:</label>
+  <span th:text="${movie.getTitle()}">Название фильма</span>
+</div>
+
+<div class="movie-details" >
+  <label>Режиссер:</label>
+  <span th:text="${movie.getDirector()}">Имя режиссера</span>
+</div>
+
+<div class="movie-details" >
+  <label>Год выпуска:</label>
+  <span th:text="${movie.getYear()}">Год выпуска фильма</span>
+</div>
+
+<a th:href="|/movies/${movie.getId()}/edit|" class="button">Изменить</a>
+<a href="/tickets/add" class="button">Продать билет</a>
+<a href="/movies" class="button">Назад к списку фильмов</a>
+</body>
+</html>
